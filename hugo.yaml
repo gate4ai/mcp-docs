@@ -32,6 +32,10 @@ markup:
         block: true
         title: true
 
+caches:
+  images:
+    dir: :cacheDir/images
+    
 params:
   project:
     # To omit the startYear, put a ~ in its place.
