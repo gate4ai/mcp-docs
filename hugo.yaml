@@ -1,0 +1,54 @@
+baseURL: "https://docs.gate4.ai/"
+
+theme: E25DX
+
+enableGitInfo: true
+
+defaultContentLanguage: en
+
+languages:
+  en:
+    weight: 1
+    languageName: English
+    languageCode: en-US
+    contentDir: content/en
+    title: gate4ai mcp documentation
+    params:
+      description: Documentation for the Model Context Protocol by Gate4AI.
+
+# To omit the Google Analytics script, put a ~ in place of the G-XXXXXXXXXX below.
+services:
+  googleAnalytics:
+    ID: GTM-NF2N4LNP
+
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+        title: true
+
+params:
+  project:
+    # To omit the startYear, put a ~ in its place.
+    startYear: 2025
+    presentYear: 2025
+    github:
+      repo: gate4ai/mcp-docs
+    themeColor:
+      light: '#ffffff'
+      dark: '#101010'
+
+  author:
+    name: Gate4AI
+    url: https://github.com/gate4ai
+
+  home:
+    heading: Explore the
+    headingSegment2: MCP Documentation
+    description: Learn how to use and contribute to the Model Context Protocol.
+    getStartedPath: docs/
