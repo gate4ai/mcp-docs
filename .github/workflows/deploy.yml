@@ -1,4 +1,4 @@
-name: Deploy docs.gate4.ai
+name: Deploy Hugo Site
 
 on:
   push:
@@ -11,12 +11,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          submodules: true 
+          submodules: true  
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest' 
+          hugo-version: 'latest'
 
       - name: Build
         run: hugo --minify
@@ -24,8 +24,8 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          personal_token: ${{ secrets.DEPLOY_KEY }} 
           publish_dir: ./public
           publish_branch: gh-pages
           force_orphan: true
-          repository: gate4ai/gate4ai.github.io
+          external_repository: gate4ai/gate4ai.github.io
