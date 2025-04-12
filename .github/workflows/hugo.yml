@@ -56,6 +56,8 @@ jobs:
         uses: rlespinasse/drawio-export-action@v2
         with:
           format: png
+          transparent: true
+          path: ./drawio/
           output: ../static/diagrams
           remove-page-suffix: true
           action-mode: all
