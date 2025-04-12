@@ -56,10 +56,8 @@ jobs:
         uses: rlespinasse/drawio-export-action@v2
         with:
           format: png
-          transparent: true
-          path: drawio
-          output: static/diagrams
-          remove-page-suffix: true
+          path: ./drawio
+          output: ../static/diagrams
       - name: Print Folder Tree
         uses: jaywcjlove/github-action-folder-tree@main
         with:
