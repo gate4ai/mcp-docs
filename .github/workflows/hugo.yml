@@ -55,6 +55,9 @@ jobs:
       - name: Export drawio files to png files
         uses: rlespinasse/drawio-export-action@v2
         with:
+          format: png
+          output: ../static/diagrams
+          remove-page-suffix: true
           action-mode: all
           
       - name: Print Folder Tree
