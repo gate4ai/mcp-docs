@@ -53,12 +53,16 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
       - name: Install draw.io CLI
         run: npm install -g @hediet/cli-drawio
       - name: Convert .drawio files to .svg
         run: |
           mkdir -p static/diagrams
-          for file in drawio/*.drawio; do
+          find drawio -name "*.drawio" | while read file; do
             filename=$(basename "$file" .drawio)
             drawio-cli export "$file" --output "static/diagrams/$filename.svg" --format svg
           done
