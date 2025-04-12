@@ -40,6 +40,17 @@ jobs:
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Install draw.io CLI
+        run: |
+          wget -q https://github.com/jgraph/drawio-desktop/releases/download/v26.2.2/drawio-amd64-26.2.2.deb
+          sudo dpkg -i drawio-amd64-26.2.2.deb || true  # ignore errors from optional dependencies  
+      - name: Convert .drawio files to .svg
+        run: |
+          mkdir -p static/diagrams
+          for file in drawio/*.drawio; do
+            filename=$(basename "$file" .drawio)
+            drawio --export "$file" --output "static/diagrams/$filename.svg" --format svg
+          done
       - name: Install Dart Sass
         run: sudo snap install dart-sass
       - name: Checkout
