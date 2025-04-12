@@ -53,19 +53,14 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Export drawio files to png files
+        uses: rlespinasse/drawio-export-action@v2
         with:
-          node-version: 'lts/*'
-      - name: Install draw.io CLI
-        run: npm install -g @hediet/cli-drawio
-      - name: Convert .drawio files to .svg
-        run: |
-          mkdir -p static/diagrams
-          find drawio -name "*.drawio" | while read file; do
-            filename=$(basename "$file" .drawio)
-            drawio-cli export "$file" --output "static/diagrams/$filename.svg" --format svg
-          done
+          format: png
+          transparent: true
+          path: drawio
+          output: static/diagrams
+          remove-page-suffix: true
 
       - name: Cache Restore
         id: cache-restore
