@@ -42,7 +42,7 @@ params:
     startYear: 2025
     presentYear: 2025
     github:
-      repo: gate4ai/mcp-docs
+      repo: gate4ai/docs
     themeColor:
       light: '#ffffff'
       dark: '#101010'
